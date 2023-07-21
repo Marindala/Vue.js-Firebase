@@ -1,3 +1,6 @@
+![image](https://github.com/Marindala/Vue.js-Firebase/assets/95050756/0e7c6603-46f1-4527-9492-724c1ceab523)
+
+
 # vue-project
 
  npm init vue@latest
