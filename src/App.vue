@@ -51,8 +51,8 @@ const newArray = [ /* usar directiva que traiga stock superior a 0 */
 
 // methods
 
-const handleClick = () => {
-  console.log("Me diste click")
+const handleClick = (message) => {
+  console.log(message)
 }
 </script>
 <!-- etiqueta template renderiza todo el html -->
@@ -95,11 +95,11 @@ const handleClick = () => {
     </template>
   </ul>
 
-  <button v-on:click="handleClick"> 
+  <button v-on:click="handleClick ('Texto 1')"> 
     Activame 1
   </button>
 
-   <button @click="handleClick">
+   <button @click="handleClick ('Texto 2')">
     Activame 2
   </button>
 </template>
