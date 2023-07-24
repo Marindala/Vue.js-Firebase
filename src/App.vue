@@ -48,6 +48,12 @@ const newArray = [ /* usar directiva que traiga stock superior a 0 */
     stock:10,
   }
 ]
+
+// methods
+
+const handleClick = () => {
+  console.log("Me diste click")
+}
 </script>
 <!-- etiqueta template renderiza todo el html -->
 <template>
@@ -85,9 +91,17 @@ const newArray = [ /* usar directiva que traiga stock superior a 0 */
 
   <ul>
     <template v-for="item in newArray" :key="item.name"><!-- como utilizar un <> -->
-     <li v-if="item.stock > 0">{{ item.name }}-{{ item.description }}</li>
+     <li v-if="item.stock > 0">{{ item.name }}-{{ item.description }}</li><!-- v-if condicional dentro de la iteración -->
     </template>
   </ul>
+
+  <button v-on:click="handleClick"> 
+    Activame 1
+  </button>
+
+   <button @click="handleClick">
+    Activame 2
+  </button>
 </template>
 
 <style>
@@ -95,3 +109,5 @@ h1 {
   color: blueviolet;
 }
 </style>
+
+{/* se puede poner v-on ó @click  */}
