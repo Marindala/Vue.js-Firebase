@@ -1,4 +1,5 @@
 <script setup>
+import {ref} from 'vue';
 const name = 'Marina'
 const styleColor = 'color:pink'
 //const arrayColor =["red","pink","ARG"] ejemplo con array,
@@ -54,6 +55,14 @@ const newArray = [ /* usar directiva que traiga stock superior a 0 */
 const handleClick = (message) => {
   console.log(message)
 }
+const counter = ref (0);
+
+const increment = () => {
+console.log('aumentar en cada click')
+counter.value++ 
+console.log(counter)
+}
+
 </script>
 <!-- etiqueta template renderiza todo el html -->
 <template>
@@ -95,12 +104,17 @@ const handleClick = (message) => {
     </template>
   </ul>
 
-  <button v-on:click="handleClick ('Texto 1')"> 
-    Activame 1
+
+  <button v-on:click.right.prevent="handleClick ('Texto right')"> 
+    Activame right
   </button>
 
    <button @click="handleClick ('Texto 2')">
     Activame 2
+  </button>
+<h2>{{ counter }}</h2>
+  <button @click="increment">
+    Contador
   </button>
 </template>
 
@@ -111,3 +125,6 @@ h1 {
 </style>
 
 {/* se puede poner v-on ó @click  */}
+{/* modificadores en eventos */}
+{/* reactividad en vue */}
+{/* ref() una forma de trabajar con vue en la reactividad */}
