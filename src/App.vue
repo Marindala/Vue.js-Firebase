@@ -57,11 +57,17 @@ const handleClick = (message) => {
 }
 const counter = ref (0);
 
+
+
 const increment = () => {
-console.log('aumentar en cada click')
+//console.log('aumentar en cada click')
 counter.value++ 
-console.log(counter)
+//console.log(counter)
 }
+
+const decrement = () => counter.value--
+const reset = () => counter.value = 0
+
 
 </script>
 <!-- etiqueta template renderiza todo el html -->
@@ -112,9 +118,17 @@ console.log(counter)
    <button @click="handleClick ('Texto 2')">
     Activame 2
   </button>
-<h2>{{ counter }}</h2>
+<h2 :class="counter >= 0 ? 'positive' : 'negative'">{{ counter }}</h2>
   <button @click="increment">
-    Contador
+    Increment
+  </button>
+
+  <button @click="decrement">
+    Decrement
+  </button>
+
+  <button @click="reset">
+    Reset
   </button>
 </template>
 
@@ -122,9 +136,19 @@ console.log(counter)
 h1 {
   color: blueviolet;
 }
+.positive {
+  color:green;
+}
+
+.negative {
+  color:red;
+}
 </style>
 
 {/* se puede poner v-on ó @click  */}
 {/* modificadores en eventos */}
 {/* reactividad en vue */}
 {/* ref() una forma de trabajar con vue en la reactividad */}
+anfn hacemos funcion flecha const funcionFlecha = anfn (aparece funcion flecha por extensión de ES7)
+
+
