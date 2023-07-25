@@ -50,6 +50,8 @@ const newArray = [ /* usar directiva que traiga stock superior a 0 */
   }
 ]
 
+const arrayFavoritos = ref([]);
+
 // methods
 
 const handleClick = (message) => {
@@ -69,17 +71,18 @@ const decrement = () => counter.value--
 const reset = () => counter.value = 0
 
 const classCounter = computed(() => {
-  if(counter.value === 0){
-    return "zero"
-  }
-  if(counter.value > 0){
-    return "positive"
-  }
-  if(counter.value < 0){
-    return "negative"
+  if (counter.value === 0) {
+    return "zero";
+  } else if (counter.value > 0) {
+    return "positive";
+  } else {
+    return "negative";
   }
 });
 
+const add = () => { 
+  arrayFavoritos.value.push(counter.value)
+ }
 
 </script>
 <!-- etiqueta template renderiza todo el html -->
@@ -143,7 +146,11 @@ const classCounter = computed(() => {
     Reset
   </button>
 
-  <button :disabled="true">Add</button> <!-- disabled true desactive button -->
+  <!-- <button :disabled="true">Add</button>  --><!-- disabled true desactive button -->
+
+  <button @click="add">Add</button>
+  <br>
+  {{ arrayFavoritos }}
 </template>
 
 <style>
