@@ -1,5 +1,5 @@
 <script setup>
-import {ref} from 'vue';
+import {ref, computed} from 'vue';
 const name = 'Marina'
 const styleColor = 'color:pink'
 //const arrayColor =["red","pink","ARG"] ejemplo con array,
