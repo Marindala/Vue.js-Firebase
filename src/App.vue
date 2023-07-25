@@ -68,6 +68,18 @@ counter.value++
 const decrement = () => counter.value--
 const reset = () => counter.value = 0
 
+const classCounter = computed(() => {
+  if(counter.value === 0){
+    return "zero"
+  }
+  if(counter.value > 0){
+    return "positive"
+  }
+  if(counter.value < 0){
+    return "negative"
+  }
+});
+
 
 </script>
 <!-- etiqueta template renderiza todo el html -->
@@ -118,7 +130,7 @@ const reset = () => counter.value = 0
    <button @click="handleClick ('Texto 2')">
     Activame 2
   </button>
-<h2 :class="counter >= 0 ? 'positive' : 'negative'">{{ counter }}</h2>
+<h2 :class="classCounter">{{ counter }}</h2>
   <button @click="increment">
     Increment
   </button>
@@ -130,6 +142,8 @@ const reset = () => counter.value = 0
   <button @click="reset">
     Reset
   </button>
+
+  <button :disabled="true">Add</button> <!-- disabled true desactive button -->
 </template>
 
 <style>
@@ -142,6 +156,9 @@ h1 {
 
 .negative {
   color:red;
+}
+.zero {
+  color:purple;
 }
 </style>
 
