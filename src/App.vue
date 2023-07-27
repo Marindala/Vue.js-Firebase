@@ -151,6 +151,14 @@ const add = () => {
   <button @click="add">Add</button>
   <br>
   {{ arrayFavoritos }}
+
+  <ul>
+    <li v-for="(num, index) in arrayFavoritos"  :key="index"
+    >
+     {{ num }}
+
+    </li>
+  </ul>
 </template>
 
 <style>
