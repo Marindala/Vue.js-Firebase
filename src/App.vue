@@ -1,5 +1,5 @@
 <script setup>
-import {ref, computed} from 'vue';
+import { ref, computed } from 'vue'
 const name = 'Marina'
 const styleColor = 'color:pink'
 //const arrayColor =["red","pink","ARG"] ejemplo con array,
@@ -29,145 +29,141 @@ const objectoFruta = {
   description: 'Banana come monito'
 }
 
-const newArray = [ /* usar directiva que traiga stock superior a 0 */
+const newArray = [
+  /* usar directiva que traiga stock superior a 0 */
   {
     name: 'Manzana',
     price: '5000',
     description: 'Una linda Manzanita',
-    stock:0,
+    stock: 0
   },
   {
     name: 'Banana',
     price: '7000',
     description: 'Banana come monito',
-    stock:20,
+    stock: 20
   },
   {
     name: 'Naranja',
     price: '9000',
     description: 'Vitamina C',
-    stock:10,
+    stock: 10
   }
 ]
 
-const arrayFavoritos = ref([]);
+const arrayFavoritos = ref([])
 
 // methods
 
 const handleClick = (message) => {
   console.log(message)
 }
-const counter = ref (0);
-
-
+const counter = ref(0)
 
 const increment = () => {
-//console.log('aumentar en cada click')
-counter.value++ 
-//console.log(counter)
+  //console.log('aumentar en cada click')
+  counter.value++
+  //console.log(counter)
 }
 
 const decrement = () => counter.value--
-const reset = () => counter.value = 0
+const reset = () => (counter.value = 0)
 
 const classCounter = computed(() => {
   if (counter.value === 0) {
-    return "zero";
+    return 'zero'
   } else if (counter.value > 0) {
-    return "positive";
+    return 'positive'
   } else {
-    return "negative";
+    return 'negative'
   }
-});
+})
 
-const add = () => { 
+const add = () => {
   arrayFavoritos.value.push(counter.value)
- }
+}
 
- const bloquearBtnAdd = computed(() => {
-  const numSearch  = arrayFavoritos.value.find(num => num === counter.value)
+const bloquearBtnAdd = computed(() => {
+  const numSearch = arrayFavoritos.value.find((num) => num === counter.value)
   console.log(numSearch)
   /* return numSearch || numSearch === 0 */
-  if(numSearch === 0) return true
-  return numSearch ? true : false;
-
- });
-
+  if (numSearch === 0) return true
+  return numSearch ? true : false
+})
 </script>
 <!-- etiqueta template renderiza todo el html -->
 <template>
-  <h1 class="h1">Hola Soy {{ name.toUpperCase() }} Programadora FullStack 🌀</h1>
-  <!--   <h2>{{ arrayColor }}</h2> muestra en texto el array -->
-  <h2 :style="styleColor">Background en artes visuales</h2>
-  <!-- v:bind:suplanta las {{  }} ///:style(abreviado)-->
-  <!--  <h2>
+  <div class="container text-center mt-3">
+    <h1 class="h1">Hola Soy {{ name.toUpperCase() }} Programadora FullStack 🌀</h1>
+    <!--   <h2>{{ arrayColor }}</h2> muestra en texto el array -->
+    <h2 :style="styleColor">Background en artes visuales</h2>
+    <!-- v:bind:suplanta las {{  }} ///:style(abreviado)-->
+    <!--  <h2>
     {{ activo ? "Estoy activo" : "No estoy activo" }}
   </h2> -->
-  <h2 v-if="activo === true">Sigo...</h2>
-  <!-- Directivas v-if ó v-else -->
-  <h2 v-else-if="activo === false">Yo estoy activa igual</h2>
-  <!-- directiva else tiene que estar seguido del if -->
-  <!--   <h2  v-if="!activo">Yo estoy activa igual</h2> -->
-  <h2 v-else>y si estas pensando yo sigo activa igual...</h2>
+    <h2 v-if="activo === true">Sigo...</h2>
+    <!-- Directivas v-if ó v-else -->
+    <h2 v-else-if="activo === false">Yo estoy activa igual</h2>
+    <!-- directiva else tiene que estar seguido del if -->
+    <!--   <h2  v-if="!activo">Yo estoy activa igual</h2> -->
+    <h2 v-else>y si estas pensando yo sigo activa igual...</h2>
 
-  <h2 v-show="activo">
-    <!-- directiva v-show utiliza display:none si es false //se utiliza para alternar algo con mucha frecuencia -->
-    Hola soy v-show
-  </h2>
+    <h2 v-show="activo">
+      <!-- directiva v-show utiliza display:none si es false //se utiliza para alternar algo con mucha frecuencia -->
+      Hola soy v-show
+    </h2>
 
-  <ul>
-    <li v-for="(fruta, index) in arrayFrutas" :key="index">{{ index }} - {{ fruta }}</li>
-    <!-- :key="id" para recorrer el array en vue se puede usar tanto in como of -->
-  </ul>
-  <ul>
-    <li v-for="(string, i) in otherArray" :key="i">{{ string.name }} -{{ string.description }}</li>
-  </ul>
+    <ul class="list-group  mt-4">
+      <li v-for="(fruta, index) in arrayFrutas" :key="index" class="list-group-item">{{ index }} - {{ fruta }}</li>
+      <!-- :key="id" para recorrer el array en vue se puede usar tanto in como of -->
+    </ul>
+    <ul class="list-group  mt-4">
+      <li v-for="(string, i) in otherArray" :key="i" class="list-group-item">
+        {{ string.name }} -{{ string.description }}
+      </li>
+    </ul>
 
-  <ul>
-    <li v-for="(value, propiedad, index) in objectoFruta" :key="value"> {{ index }}-{{ propiedad }} : {{ value }}</li> <!-- en este caso me renderiza todos los value del object -->
-    
-  </ul>
+    <ul class="list-group  mt-4">
+      <li v-for="(value, propiedad, index) in objectoFruta" :key="value" class="list-group-item">
+        {{ index }}-{{ propiedad }} : {{ value }}
+      </li>
+      <!-- en este caso me renderiza todos los value del object -->
+    </ul>
 
-  <ul>
-    <template v-for="item in newArray" :key="item.name"><!-- como utilizar un <> -->
-     <li v-if="item.stock > 0">{{ item.name }}-{{ item.description }}</li><!-- v-if condicional dentro de la iteración -->
-    </template>
-  </ul>
+    <ul class="list-group  mt-4">
+      <template v-for="item in newArray" :key="item.name"
+        ><!-- como utilizar un <> -->
+        <li v-if="item.stock > 0" class="list-group-item">{{ item.name }}-{{ item.description }}</li>
+        <!-- v-if condicional dentro de la iteración -->
+      </template>
+    </ul>
+    <div class="btn-group"></div>
 
+    <button v-on:click.right.prevent="handleClick('Texto right')">Activame right</button>
 
-  <button v-on:click.right.prevent="handleClick ('Texto right')"> 
-    Activame right
-  </button>
+    <button @click="handleClick('Texto 2')">Activame 2</button>
+    <h2 :class="classCounter">{{ counter }}</h2>
+    <div class="btn-group">
+      <button @click="increment" class="btn btn-success">Increment</button>
 
-   <button @click="handleClick ('Texto 2')">
-    Activame 2
-  </button>
-<h2 :class="classCounter">{{ counter }}</h2>
-  <button @click="increment" class="btn btn-success">
-    Increment
-  </button>
+      <button @click="decrement" class="btn btn-danger">Decrement</button>
 
-  <button @click="decrement"  class="btn btn-danger">
-    Decrement
-  </button>
+      <button @click="reset" class="btn btn-secondary">Reset</button>
 
-  <button @click="reset"  class="btn btn-secondary">
-    Reset
-  </button>
+      <!-- <button :disabled="true">Add</button>  --><!-- disabled true desactive button -->
 
-  <!-- <button :disabled="true">Add</button>  --><!-- disabled true desactive button -->
+      <button @click="add" :disabled="bloquearBtnAdd" class="btn btn-primary">Add</button>
+    </div>
 
-  <button @click="add" :disabled="bloquearBtnAdd"  class="btn btn-primary">Add</button>
-  <br>
-  {{ arrayFavoritos }}
+    <br />
+    {{ arrayFavoritos }}
 
-  <ul>
-    <li v-for="(num, index) in arrayFavoritos"  :key="index"
-    >
-     {{ num }}
-
-    </li>
-  </ul>
+    <ul class="list-group mt-4">
+      <li v-for="(num, index) in arrayFavoritos" :key="index" class="list-group-item">
+        {{ num }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style>
@@ -175,21 +171,17 @@ h1 {
   color: blueviolet;
 }
 .positive {
-  color:green;
+  color: green;
 }
 
 .negative {
-  color:red;
+  color: red;
 }
 .zero {
-  color:purple;
+  color: purple;
 }
 </style>
 
-{/* se puede poner v-on ó @click  */}
-{/* modificadores en eventos */}
-{/* reactividad en vue */}
-{/* ref() una forma de trabajar con vue en la reactividad */}
-anfn hacemos funcion flecha const funcionFlecha = anfn (aparece funcion flecha por extensión de ES7)
-
-
+{/* se puede poner v-on ó @click */} {/* modificadores en eventos */} {/* reactividad en vue */} {/*
+ref() una forma de trabajar con vue en la reactividad */} anfn hacemos funcion flecha const
+funcionFlecha = anfn (aparece funcion flecha por extensión de ES7)
