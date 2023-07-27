@@ -1,5 +1,10 @@
 https://bluuweb.github.io/vue-udemy/30-01-fundamentos/#mi-primer-proyecto
 
+Deploy: 
+-npm run build  (crea carpeta dist)
+-npm run preview (para revisar la compilación)
+-ir a netlify y arrastrar carpeta dist en site.
+
 ![image](https://github.com/Marindala/Vue.js-Firebase/assets/95050756/0e7c6603-46f1-4527-9492-724c1ceab523)
 
 
