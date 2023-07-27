@@ -84,6 +84,13 @@ const add = () => {
   arrayFavoritos.value.push(counter.value)
  }
 
+ const bloquearBtnAdd = computed(() => {
+  const numSearch  = arrayFavoritos.value.find(num => num === counter.value)
+  console.log(numSearch)
+  return numSearch ? true : false;
+
+ });
+
 </script>
 <!-- etiqueta template renderiza todo el html -->
 <template>
@@ -148,7 +155,7 @@ const add = () => {
 
   <!-- <button :disabled="true">Add</button>  --><!-- disabled true desactive button -->
 
-  <button @click="add">Add</button>
+  <button @click="add" :disabled="bloquearBtnAdd">Add</button>
   <br>
   {{ arrayFavoritos }}
 
