@@ -87,6 +87,7 @@ const add = () => {
  const bloquearBtnAdd = computed(() => {
   const numSearch  = arrayFavoritos.value.find(num => num === counter.value)
   console.log(numSearch)
+  /* return numSearch || numSearch === 0 */
   if(numSearch === 0) return true
   return numSearch ? true : false;
 
@@ -142,21 +143,21 @@ const add = () => {
     Activame 2
   </button>
 <h2 :class="classCounter">{{ counter }}</h2>
-  <button @click="increment">
+  <button @click="increment" class="btn btn-success">
     Increment
   </button>
 
-  <button @click="decrement">
+  <button @click="decrement"  class="btn btn-danger">
     Decrement
   </button>
 
-  <button @click="reset">
+  <button @click="reset"  class="btn btn-secondary">
     Reset
   </button>
 
   <!-- <button :disabled="true">Add</button>  --><!-- disabled true desactive button -->
 
-  <button @click="add" :disabled="bloquearBtnAdd">Add</button>
+  <button @click="add" :disabled="bloquearBtnAdd"  class="btn btn-primary">Add</button>
   <br>
   {{ arrayFavoritos }}
 
