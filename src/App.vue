@@ -87,6 +87,7 @@ const add = () => {
  const bloquearBtnAdd = computed(() => {
   const numSearch  = arrayFavoritos.value.find(num => num === counter.value)
   console.log(numSearch)
+  if(numSearch === 0) return true
   return numSearch ? true : false;
 
  });
